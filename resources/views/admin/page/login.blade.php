@@ -24,11 +24,75 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     @stack('style')
     <title>Toko Online | {{ $title }}</title>
+
+    <style>
+        body {
+            background: linear-gradient(45deg, #6CC1D3, #F4F6F6);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .card {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .card-header {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-control {
+            border-radius: 8px;
+        }
+
+        .btn {
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-success:hover {
+            background-color: #28a745;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc3545;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .alert {
+            font-size: 14px;
+        }
+
+        .card-footer {
+            padding: 1rem;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            border: none;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            border: none;
+        }
+
+        .login-form-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
 </head>
 
 <body>
 
-    <main class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+    <main class="login-form-wrapper">
         <div class="card p-4 m-auto" style="width: 30vw;">
             <div class="card-header bg-transparent text-center">
                 <h5>{{ $name }}</h5>
@@ -44,8 +108,8 @@
                     <div class="mb-3 row">
                         <label for="email" class="col-sm-5 col-form-label">Email</label>
                         <div class="col-sm-7">
-                            <input type="email" class="p-2 form-control-plaintext" id="email" name="email"
-                                value="" autocomplete="off" autofocus>
+                            <input type="email" class="p-2 form-control" id="email" name="email" autocomplete="off"
+                                autofocus>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -65,6 +129,7 @@
 
     @include('sweetalert::alert')
 </body>
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
     integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
 </script>

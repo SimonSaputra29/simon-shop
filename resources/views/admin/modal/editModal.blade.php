@@ -21,56 +21,49 @@
                         <label for="nameProduct" class="col-sm-5 col-form-label">Nama Product</label>
                         <div class="col-sm-7">
                             <input type="text" class="form-control" id="nameProduct" name="nama"
-                                value="{{ $data->nama_product }}">
+                                value="{{ $data->nama_product }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="type" class="col-sm-5 col-form-label">Type Product</label>
                         <div class="col-sm-7">
-                            <select type="text" class="form-control" id="type" name="type">
+                            <select type="text" class="form-control" id="type" name="type" required>
                                 <option value=""> Pilih Type </option>
                                 <option value="celana" {{ $data->type === 'celana' ? 'selected' : '' }}>Celana</option>
                                 <option value="baju" {{ $data->type === 'baju' ? 'selected' : '' }}>Baju</option>
-                                <option value="aksesoris" {{ $data->type === 'aksesoris' ? 'selected' : '' }}>Aksesoris
-                                </option>
+                                <option value="aksesoris" {{ $data->type === 'aksesoris' ? 'selected' : '' }}>Aksesoris</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="kategori" class="col-sm-5 col-form-label">Kategori Product</label>
                         <div class="col-sm-7">
-                            <select type="text" class="form-control" id="kategori" name="kategori">
+                            <select type="text" class="form-control" id="kategori" name="kategori" required>
                                 <option value=""> Pilih Kategori </option>
                                 <option value="Pria" {{ $data->kategory === 'Pria' ? 'selected' : '' }}>Pria</option>
-                                <option value="Wanita" {{ $data->kategory === 'wanita' ? 'selected' : '' }}>Wanita
-                                </option>
-                                <option value="Anak-anak" {{ $data->kategory === 'Anak-anak' ? 'selected' : '' }}>
-                                    Anak-anak</option>
+                                <option value="Wanita" {{ $data->kategory === 'Wanita' ? 'selected' : '' }}>Wanita</option>
+                                <option value="Anak-anak" {{ $data->kategory === 'Anak-anak' ? 'selected' : '' }}>Anak-anak</option>
                             </select>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="harga" class="col-sm-5 col-form-label">Harga Product</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="harga" name="harga"
-                                value="{{ $data->harga }}">
+                            <input type="number" class="form-control" id="harga" name="harga" value="{{ $data->harga }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="quantity" class="col-sm-5 col-form-label">Qty Product</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="quantity" name="quantity"
-                                value="{{ $data->quantity }}">
+                            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ $data->quantity }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="foto" class="col-sm-5 col-form-label">Foto Product</label>
                         <div class="col-sm-7">
                             <input type="hidden" name="foto" value="{{$data->foto}}">
-                            <img src="{{ asset('storage/product/' . $data->foto) }}" class="mb-2 preview"
-                                style="width: 100px;">
-                            <input type="file" class="form-control" accept=".png, .jpg, .jpeg" id="inputFoto"
-                                name="foto" onchange="previewImg()">
+                            <img id="imagePreview" src="{{ asset('storage/product/' . $data->foto) }}" class="mb-2 preview" style="width: 100px;">
+                            <input type="file" class="form-control" accept=".png, .jpg, .jpeg" id="inputFoto" name="foto" onchange="previewImg()">
                         </div>
                     </div>
                 </div>
@@ -87,15 +80,18 @@
 <script>
     function previewImg() {
         const fotoIn = document.querySelector('#inputFoto');
-        const preview = document.querySelector('.preview');
+        const preview = document.querySelector('#imagePreview');
 
-        preview.style.display = 'block';
+        if (fotoIn.files && fotoIn.files[0]) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.style.display = 'block'; // Show image preview
+            }
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(fotoIn.files[0]);
-
-        oFReader.onload = function(oFREvent) {
-            preview.src = oFREvent.target.result;
+            reader.readAsDataURL(fotoIn.files[0]);
+        } else {
+            preview.style.display = 'none'; // Hide preview if no file selected
         }
     }
 </script>

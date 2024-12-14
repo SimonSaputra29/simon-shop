@@ -109,6 +109,8 @@ class UserController extends Controller
     }
     public function storePelanggan(UserRequest $request)
     {
+        // dd($request);
+        // die;   
         $data = new User;
         $nik  = "Member" . rand(000, 999);
         $data->nik          = $nik;

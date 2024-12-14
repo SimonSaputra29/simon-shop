@@ -82,6 +82,16 @@ footer {
     color: white;
 }
 
+.hover-icon {
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.hover-icon:hover {
+    color: #007bff; /* Ubah warna ikon saat hover */
+    transform: scale(1.2); /* Membesarkan ikon sedikit saat hover */
+}
+
+
 /* sidebar */
 .sidebar {
     position: fixed;
@@ -106,4 +116,144 @@ footer {
     font-weight: 800;
     color: white;
     text-align: center;
+}
+
+/* Home Pelanggan */
+/* Global styles */
+* {
+    font-family: "Poppins", sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+h4 {
+    font-weight: 700;
+    font-size: 24px;
+}
+
+/* Card styles */
+.card {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Image styles */
+.card-header img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Product name and price */
+.card-body p {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card-footer p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Button styles */
+.btn-outline-primary {
+    font-size: 24px;
+    border-radius: 5px;
+}
+
+.btn-outline-primary:hover {
+    background-color: #025464;
+    color: white;
+}
+
+/* Pagination styles */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.showData {
+    font-size: 14px;
+    color: #333;
+}
+
+/* Contact  */
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.bg-secondary {
+    background-color: #f8f9fa !important;
+}
+
+.img-fluid {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.img-fluid:hover {
+    transform: scale(1.05);
+}
+
+/* Maps */
+.hover-shadow:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.bg-secondary {
+    background-color: #f8f9fa !important;
+}
+
+.img-fluid {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.img-fluid:hover {
+    transform: scale(1.05);
+}
+
+/* Responsiveness for mobile devices */
+@media (max-width: 768px) {
+    .d-flex {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-6 {
+        margin-bottom: 20px;
+    }
+
+    .card-body {
+        padding: 1.5rem;
+    }
 }

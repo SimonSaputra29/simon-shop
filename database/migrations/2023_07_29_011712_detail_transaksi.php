@@ -20,7 +20,10 @@ return new class extends Migration
             $table->integer('status')->default(0);
             $table->timestamps();
 
-            $table->foreign('id_barang')->references('id')->on('products');
+            // Menambahkan cascade delete untuk foreign key
+            $table->foreign('id_barang')
+                ->references('id')->on('products')
+                ->onDelete('cascade'); // Menghapus detail_transaksis ketika produk dihapus
         });
     }
 

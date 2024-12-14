@@ -6,7 +6,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('storePelanggan') }}" method="POST">
+                <form action="{{ route('storePelanggan') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3 row">
                         <label for="nama" class="col-sm-3 col-form-label">Name <span

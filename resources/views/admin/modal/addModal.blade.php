@@ -12,21 +12,20 @@
                     <div class="mb-3 row">
                         <label for="SKU" class="col-sm-5 col-form-label">SKU</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control-plaintext" id="SKU" name="sku"
-                                value="{{$sku}}" readonly>
+                            <input type="text" class="form-control-plaintext" id="SKU" name="sku" value="{{$sku}}" readonly>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="nameProduct" class="col-sm-5 col-form-label">Nama Product</label>
                         <div class="col-sm-7">
-                            <input type="text" class="form-control" id="nameProduct" name="nama">
+                            <input type="text" class="form-control" id="nameProduct" name="nama" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="type" class="col-sm-5 col-form-label">Type Product</label>
                         <div class="col-sm-7">
-                            <select type="text" class="form-control" id="type" name="type">
-                                <option value=""> Pilih Type </option>
+                            <select class="form-control" id="type" name="type" required>
+                                <option value="">Pilih Type</option>
                                 <option value="celana">Celana</option>
                                 <option value="baju">Baju</option>
                                 <option value="aksesoris">Aksesoris</option>
@@ -36,8 +35,8 @@
                     <div class="mb-3 row">
                         <label for="kategori" class="col-sm-5 col-form-label">Kategori Product</label>
                         <div class="col-sm-7">
-                            <select type="text" class="form-control" id="kategori" name="kategori">
-                                <option value=""> Pilih Kategori </option>
+                            <select class="form-control" id="kategori" name="kategori" required>
+                                <option value="">Pilih Kategori</option>
                                 <option value="Pria">Pria</option>
                                 <option value="Wanita">Wanita</option>
                                 <option value="Anak-anak">Anak-anak</option>
@@ -47,23 +46,21 @@
                     <div class="mb-3 row">
                         <label for="harga" class="col-sm-5 col-form-label">Harga Product</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="harga" name="harga">
+                            <input type="number" class="form-control" id="harga" name="harga" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="quantity" class="col-sm-5 col-form-label">Qty Product</label>
                         <div class="col-sm-7">
-                            <input type="number" class="form-control" id="quantity" name="quantity">
+                            <input type="number" class="form-control" id="quantity" name="quantity" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="foto" class="col-sm-5 col-form-label">Foto Product</label>
                         <div class="col-sm-7">
                             <input type="hidden" name="foto">
-                            <img class="mb-2 preview"
-                                style="width: 100px;">
-                            <input type="file" class="form-control" accept=".png, .jpg, .jpeg" id="inputFoto"
-                                name="foto" onchange="previewImg()">
+                            <img class="mb-2 preview" style="width: 100px; display: none;">
+                            <input type="file" class="form-control" accept=".png, .jpg, .jpeg" id="inputFoto" name="foto" onchange="previewImg()">
                         </div>
                     </div>
                 </div>
@@ -76,18 +73,23 @@
         </div>
     </div>
 </div>
+
 <script>
     function previewImg() {
         const fotoIn = document.querySelector('#inputFoto');
         const preview = document.querySelector('.preview');
 
-        preview.style.display = 'block';
+        if (fotoIn.files && fotoIn.files[0]) {
+            preview.style.display = 'block';
 
-        const oFReader = new FileReader();
-        oFReader.readAsDataURL(fotoIn.files[0]);
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+            }
 
-        oFReader.onload = function(oFREvent) {
-            preview.src = oFREvent.target.result;
+            reader.readAsDataURL(fotoIn.files[0]);
+        } else {
+            preview.style.display = 'none';
         }
     }
 </script>
