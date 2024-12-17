@@ -39,6 +39,7 @@ class Controller extends BaseController
             'count'     => $countKeranjang,
         ]);
     }
+    
     public function transaksi()
     {
         $db = tblCart::with('product')->where(['idUser' => 'guest123', 'status' => 0])->get();
