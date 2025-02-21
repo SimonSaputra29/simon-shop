@@ -37,6 +37,8 @@
 
     <!-- Title of the Page -->
     <title>Simon Shop | {{ $title }}</title>
+
+    
 </head>
 
 <body>
